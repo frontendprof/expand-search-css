@@ -49,8 +49,9 @@ body {
   width: var(--size);
   padding: 3px;
   position: relative;
-  -webkit-transition: width 300ms ease-in-out;
-  transition: width 300ms ease-in-out;
+  -webkit-transition: width 800ms cubic-bezier(0.18, 0.89, 0.32, 1.15);
+  transition: width 800ms cubic-bezier(0.18, 0.89, 0.32, 1.15);
+  overflow: hidden;
 }
 
 .search-bar__input {
@@ -60,11 +61,12 @@ body {
   font-size: 1.5rem;
   padding: 0 .5rem;
   border: 0;
-  background: rgba(173, 216, 230, 0.5);
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
+  opacity: 0;
+  cursor: pointer;
 }
 
 .search-bar__input:focus {
@@ -77,12 +79,32 @@ body {
   border: 0;
   background: transparent;
   border-radius: 50%;
-  background: pink;
   width: calc(var(--size) - 10px);
   height: calc(var(--size) - 10px);
+  margin-left: auto;
+  -webkit-transition: background 200ms ease-in-out;
+  transition: background 200ms ease-in-out;
 }
 
 .search-bar:focus-within {
   width: 100%;
+}
+
+.search-bar:focus-within .search-bar__input {
+  opacity: 1;
+  cursor: initial;
+  background: lightblue;
+  width: calc(100% - var(--size));
+}
+
+.search-bar:focus-within .search-bar__submit {
+  background: var(--clr-primary);
+  color: white;
+}
+
+.search-bar:focus-within .search-bar__submit:focus, .search-bar:focus-within .search-bar__submit:hover {
+  outline: 0;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
 }
 /*# sourceMappingURL=style.css.map */
